@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Users</h1>
+    {% if user_list %}
+    <ul>
+        {% for user in user_list %}
+            <li>
+                <p>{{ user.username }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>There are no posts.</p>
+    {% endif %}
+{% endblock %}
