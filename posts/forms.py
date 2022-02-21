@@ -3,6 +3,7 @@ from django import forms
 from posts.models import Post
 
 
+# User registration custom form
 class RegisterForm(forms.Form):
     username = forms.CharField(
         widget=forms.TextInput(attrs={'class':'form-control'})
@@ -24,6 +25,7 @@ class RegisterForm(forms.Form):
     )
 
 
+# New post model form
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post

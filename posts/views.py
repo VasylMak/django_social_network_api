@@ -11,6 +11,7 @@ from .forms import RegisterForm
 from .models import Post
 
 
+# Create new users in the site
 def user_register(request):
     template = 'posts/register.html'
    
@@ -55,11 +56,13 @@ def user_register(request):
     return render(request, template, {'form': form})
 
 
+# Index page with all posts
 class PostListView(generic.ListView):
     model = Post
     paginate_by = 10
 
 
+# Create new posts in the site
 class PostCreate(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['content']
@@ -70,6 +73,7 @@ class PostCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+# Add likes in the site
 class AddLike(LoginRequiredMixin, View):
     def post(self, request, pk):
         post = Post.objects.get(pk=pk)
@@ -100,6 +104,7 @@ class AddLike(LoginRequiredMixin, View):
         return HttpResponseRedirect(next)
 
 
+# Add dislikes in the site
 class AddDislike(LoginRequiredMixin, View):
     def post(self, request, pk):
         post = Post.objects.get(pk=pk)
@@ -130,6 +135,7 @@ class AddDislike(LoginRequiredMixin, View):
         return HttpResponseRedirect(next)
 
 
+# The list of users in the site
 class UserListView(generic.ListView):
     model = User
     paginate_by = 20

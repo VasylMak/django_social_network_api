@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from .models import Profile, Post
 
 
+# Admin page additional fields
 class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False

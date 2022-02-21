@@ -23,6 +23,7 @@ from .serializers import (
 )
 
 
+# GET and POST posts by API
 class PostAPI(ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
@@ -45,6 +46,7 @@ class PostAPI(ListCreateAPIView):
         )
 
 
+# PUT likes by API
 class AddLikeAPI(UpdateAPIView):
     serializer_class = AddLikeSerializer
     post_id = 'pk'
@@ -78,6 +80,7 @@ class AddLikeAPI(UpdateAPIView):
             )
 
 
+# PUT dislikes by API
 class AddDislikeAPI(UpdateAPIView):
     serializer_class = AddDislikeSerializer
     post_id = 'pk'
@@ -111,6 +114,7 @@ class AddDislikeAPI(UpdateAPIView):
             )
 
 
+# POST users by API
 class UserAPI(CreateAPIView):
     model = get_user_model()
     permission_classes = (AllowAny,)
@@ -131,6 +135,7 @@ class PostAnaliticsLikesAPI(ListAPIView):
         return filtered_queryset
 
 
+# GET users activity by API
 class UserAnaliticsActivityAPI(ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserAnaliticsActivitySerializer

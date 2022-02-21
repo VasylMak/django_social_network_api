@@ -14,7 +14,7 @@ urlpatterns = [
         name='like_api'
     ),
     path(
-        'post/analitics/?date_from=<date_from>&date_to=<date_to>/',
+        'post/analitics/date_from=<date_from>&date_to=<date_to>/',
         views.PostAnaliticsLikesAPI.as_view(),
         name='post_analitics'
     ),

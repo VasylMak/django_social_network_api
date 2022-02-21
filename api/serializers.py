@@ -3,6 +3,7 @@ from rest_framework import serializers
 from posts.models import LikeDate, Post
 
 
+# API posts settings
 class PostSerializer(serializers.ModelSerializer):
     likes = serializers.IntegerField(source='likes.count', read_only=True)
     dislikes = serializers.IntegerField(source='dislikes.count',read_only=True)
@@ -12,6 +13,7 @@ class PostSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+# API add users settings
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
@@ -28,6 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+# API likes analitics settings
 class PostAnaliticsLikesSerializer(serializers.ModelSerializer):
     
     class Meta:
@@ -35,6 +38,7 @@ class PostAnaliticsLikesSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+# API users analitics settings
 class UserAnaliticsActivitySerializer(serializers.ModelSerializer):
     last_request = serializers.CharField(source='profile.last_request')
     
@@ -43,6 +47,7 @@ class UserAnaliticsActivitySerializer(serializers.ModelSerializer):
         fields = ['username', 'date_joined', 'last_request']
 
 
+# API add likes settings
 class AddLikeSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -50,6 +55,7 @@ class AddLikeSerializer(serializers.ModelSerializer):
         fields = ['likes']
 
 
+# API add dislikes settings
 class AddDislikeSerializer(serializers.ModelSerializer):
 
     class Meta:

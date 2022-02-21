@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 
+# Additional field for users requests
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     last_request = models.DateTimeField(blank=True, null=True)
@@ -17,6 +18,7 @@ def create_profile(sender, **kwargs):
 post_save.connect(create_profile, sender=User)
 
 
+# Post settings
 class Post(models.Model):
     '''Model representing a post'''
     creator = models.ForeignKey(
@@ -47,6 +49,7 @@ class Post(models.Model):
         return f'{self.creator} - {self.created}'
 
 
+# Additional field for likes date
 class LikeDate(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
